@@ -51,13 +51,12 @@ public class EscalonadorRoundRobin {
             System.out.println(saidal3);
             System.out.println(" ");
             
+            Thread.sleep(1000);
+            cont++;
+            
             saidal1 = "Tempo "+cont;
             saidal2 = "FILA: ";
             saidal3 = "CPU: ";
-            
-            Thread.sleep(1000);
-            cont++;
-
             
             if(cpuP!=null){
                 cpuP.duracao-=1;
