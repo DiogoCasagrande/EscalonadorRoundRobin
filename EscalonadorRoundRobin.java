@@ -42,7 +42,7 @@ public class EscalonadorRoundRobin {
             
             //ao utilizar a cpu
             if(cpuP==null){
-                if(fila.empty()){
+                if(fila.isEmpty()){
                     saidal2 += " Não há processos na fila";
                 }
                 else{
@@ -89,3 +89,4 @@ public class EscalonadorRoundRobin {
         System.out.println("Encerrado");
     }
 }
+
