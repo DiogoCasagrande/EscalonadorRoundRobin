@@ -39,8 +39,7 @@ public class EscalonadorRoundRobin {
                     saidal1 +=" Chegada do processo " + ps[i].pid;
                 }
             }
-            
-            //ao utilizar a cpu
+                        //ao utilizar a cpu
             if(cpuP==null){
                 if(fila.isEmpty()){
                     saidal2 += " Não há processos na fila";
@@ -49,6 +48,16 @@ public class EscalonadorRoundRobin {
                     cpuP = fila.dequeue();
                 }
             }
+            
+            saidal2 += fila.print();
+            saidal3 += cpuP.pid + " ("+cpuP.duracao+")";
+            System.out.println(saidal1);
+            System.out.println(saidal2);
+            System.out.println(saidal3);
+            System.out.println(" ");
+            Thread.sleep(1000);
+            cont++;
+
             
             if(cpuP!=null){
                 cpuP.duracao-=1;
@@ -76,15 +85,8 @@ public class EscalonadorRoundRobin {
                 }
             }
             
-            saidal2 += fila.print();
-            saidal3 += cpuP.pid + " ("+cpuP.duracao+")";
-            System.out.println(saidal1);
-            System.out.println(saidal2);
-            System.out.println(saidal3);
-            
             //contar tempo
-            Thread.sleep(1000);
-            cont++;
+
         }while(qtdProcessos!=0);
         System.out.println("Encerrado");
     }
