@@ -29,16 +29,18 @@ public class EscalonadorRoundRobin {
         saidal1 = "Tempo "+cont;
         saidal2 = "FILA: ";
         saidal3 = "CPU: ";
+        
+        for(int i = 0;i<ps.length;i++){
+            if(ps[i].chegada == cont){
+                fila.equeue(ps[i]);
+                saidal1 +=" Chegada do processo " + ps[i].pid;
+            }
+        }
         do{
 
             //troca de contexto
             //uma thread pra add eles a fila baseada no tempo
-            for(int i = 0;i<ps.length;i++){
-                if(ps[i].chegada == cont){
-                    fila.equeue(ps[i]);
-                    saidal1 +=" Chegada do processo " + ps[i].pid;
-                }
-            }
+
                         //ao utilizar a cpu
             if(cpuP==null){
                     cpuP = fila.dequeue();
@@ -63,32 +65,38 @@ public class EscalonadorRoundRobin {
                 cpuP.cpuUsing++;
                 quantumCont++;
                 if(cpuP.duracao == 0){
+                    saidal1+=" Fim do processo "+cpuP.pid;
                     cpuP = fila.dequeue();
                     quantumCont = 0;
                     qtdProcessos--;
                 }
-                if(quantumCont == quantum){
+                else if(quantumCont == quantum){
                     saidal1 += "Fim do quantum "+cpuP.pid;
                     quantumCont = 0;
                     fila.equeue(cpuP);
                     cpuP = fila.dequeue();
                 }
-
                 else {
-                    for(int i = 0; i< cpuP.opIO.length;i++){
-                    if(cpuP.opIO[i] == cpuP.cpuUsing){
-                        saidal1 += " Operacao de IO " + cpuP.pid;
-                        fila.equeue(cpuP);
-                        
-                        cpuP = fila.dequeue();
-                        quantumCont = 0;
-                        break;
+                    for(int i = 0;i<ps.length;i++){
+                        if(ps[i].chegada == cont){
+                            fila.equeue(ps[i]);
+                            saidal1 +=" Chegada do processo " + ps[i].pid;
+                        }
+                    }
+                    if(cpuP.opIO!=null){
+                        for(int i = 0; i< cpuP.opIO.length;i++){
+                            if(cpuP.opIO[i] == cpuP.cpuUsing){
+                                saidal1 += " Operacao de IO " + cpuP.pid;
+                                fila.equeue(cpuP);
+
+                                cpuP = fila.dequeue();
+                                quantumCont = 0;
+                                break;
+                            }
+                        }
                     }
                 }
-                }
             }
-            
-            //contar tempo
 
         }while(qtdProcessos!=0);
         System.out.println("Encerrado");
