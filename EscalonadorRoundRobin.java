@@ -25,7 +25,9 @@ public class EscalonadorRoundRobin {
         
         qtdProcessos = ps.length;
         
-        System.out.println("Começo");
+        System.out.println("*************************************");
+        System.out.println("*******Escalonador Round-Robin*******");
+        System.out.println("*************************************");
         saidal1 = "Tempo "+cont;
         saidal2 = "FILA: ";
         saidal3 = "CPU: ";
@@ -99,7 +101,9 @@ public class EscalonadorRoundRobin {
             }
 
         }while(qtdProcessos!=0);
-        System.out.println("Encerrado");
+        System.out.println("*************************************");
+        System.out.println("Encerrando simulação de escalonamento");
+        System.out.println("*************************************");
     }
 }
 
