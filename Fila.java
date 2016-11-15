@@ -36,13 +36,18 @@ public class Fila {
     public boolean isEmpty(){
         return size == 0;
     }
+    
     public String print(){
+        if(isEmpty()){
+            return "não há processos na fila";
+        }
         String saida = "";
         No aux = inicio;
         for(int i = 0; i<size;i++){
             saida += aux.valor.pid +"("+aux.valor.duracao+") ";
             aux = aux.proximo;
         }
+        
         return saida;
     }
 }
