@@ -1,7 +1,9 @@
 
 public class No {
-    No proximo;
+    public No proximo;
     Processo valor;
+    public No anterior;
+    
     public No(Processo p){
         valor = p;
     }
