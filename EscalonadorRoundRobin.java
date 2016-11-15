@@ -41,12 +41,7 @@ public class EscalonadorRoundRobin {
             }
                         //ao utilizar a cpu
             if(cpuP==null){
-                if(fila.isEmpty()){
-                    saidal2 += " Não há processos na fila";
-                }
-                else{
                     cpuP = fila.dequeue();
-                }
             }
             
             saidal2 += fila.print();
@@ -76,7 +71,7 @@ public class EscalonadorRoundRobin {
 
                 for(int i = 0; i< cpuP.opIO.length;i++){
                     if(cpuP.opIO[i] == cpuP.cpuUsing){
-                        saidal1 += " Operacao de IO" + cpuP.pid;
+                        saidal1 += " Operacao de IO " + cpuP.pid;
                         fila.equeue(cpuP);
                         cpuP = fila.dequeue();
                         quantumCont = 0;
@@ -91,4 +86,3 @@ public class EscalonadorRoundRobin {
         System.out.println("Encerrado");
     }
 }
-
