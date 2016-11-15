@@ -36,8 +36,13 @@ public class Fila {
     public boolean isEmpty(){
         return size == 0;
     }
-    
     public String print(){
-        return null;
+        String saida = "";
+        No aux = inicio;
+        for(int i = 0; i<size;i++){
+            saida += aux.valor.pid +"("+aux.valor.duracao+") ";
+            aux = aux.proximo;
+        }
+        return saida;
     }
 }
