@@ -26,11 +26,11 @@ public class EscalonadorRoundRobin {
         qtdProcessos = ps.length;
         
         System.out.println("Começo");
-        
+        saidal1 = "Tempo "+cont;
+        saidal2 = "FILA: ";
+        saidal3 = "CPU: ";
         do{
-            saidal1 = "Tempo "+cont;
-            saidal2 = "FILA: ";
-            saidal3 = "CPU: ";
+
             //troca de contexto
             //uma thread pra add eles a fila baseada no tempo
             for(int i = 0;i<ps.length;i++){
@@ -50,6 +50,11 @@ public class EscalonadorRoundRobin {
             System.out.println(saidal2);
             System.out.println(saidal3);
             System.out.println(" ");
+            
+            saidal1 = "Tempo "+cont;
+            saidal2 = "FILA: ";
+            saidal3 = "CPU: ";
+            
             Thread.sleep(1000);
             cont++;
 
