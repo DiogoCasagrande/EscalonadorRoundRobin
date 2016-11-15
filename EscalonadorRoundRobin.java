@@ -73,7 +73,7 @@ public class EscalonadorRoundRobin {
                     qtdProcessos--;
                 }
                 else if(quantumCont == quantum){
-                    saidal1 += "Fim do quantum "+cpuP.pid;
+                    saidal1 += " Fim do quantum "+cpuP.pid;
                     quantumCont = 0;
                     fila.equeue(cpuP);
                     cpuP = fila.dequeue();
