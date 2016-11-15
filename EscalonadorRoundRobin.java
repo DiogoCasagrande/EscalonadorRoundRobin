@@ -68,19 +68,23 @@ public class EscalonadorRoundRobin {
                     qtdProcessos--;
                 }
                 if(quantumCont == quantum){
+                    saidal1 += "Fim do quantum "+cpuP.pid;
                     quantumCont = 0;
                     fila.equeue(cpuP);
                     cpuP = fila.dequeue();
                 }
 
-                for(int i = 0; i< cpuP.opIO.length;i++){
+                else {
+                    for(int i = 0; i< cpuP.opIO.length;i++){
                     if(cpuP.opIO[i] == cpuP.cpuUsing){
                         saidal1 += " Operacao de IO " + cpuP.pid;
                         fila.equeue(cpuP);
+                        
                         cpuP = fila.dequeue();
                         quantumCont = 0;
                         break;
                     }
+                }
                 }
             }
             
@@ -90,3 +94,4 @@ public class EscalonadorRoundRobin {
         System.out.println("Encerrado");
     }
 }
+
